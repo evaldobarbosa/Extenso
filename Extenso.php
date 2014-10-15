@@ -1,4 +1,9 @@
 <?php
+/**
+ * Biblioteca para escrita de números por extenso
+ * @version 1.0
+ * @author Evaldo Barbosa <evaldobarbosa@gmail.com>
+ */
 class Extenso {
 	const MOEDA = 1;
 	const NUMERO = 2;
