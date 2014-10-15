@@ -7,7 +7,6 @@ Biblioteca que escreve números por extenso
 	<?php
 	require 'Extenso.php';
 
-	<?php
 	$numero = 6555444333222.11;
 
 	//Informando à biblioteca o valor a ser escrito
