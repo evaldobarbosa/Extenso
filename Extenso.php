@@ -50,14 +50,16 @@ class Extenso {
 		foreach ($x as $key => $value) {
 			$x[ $key ] = self::converte( $value );
 
-			$i = $key;//( count($x) - $key ) -1;
-
 			if ( $key > 0 ) {
 				$x[ $key ] .= ( (int)$value == 1 )
-					? " " . self::$mil_sing[ $i ]
-					: " " . self::$mil_plur[ $i ];
+					? " " . self::$mil_sing[ $key-1 ]
+					: " " . self::$mil_plur[ $key-1 ];
 			}
 		}
+
+		$x = array_filter($x, function($value) {
+			return ( !empty( trim($value) ) );
+		});
 
 		$x = array_reverse($x);
 		$cent = self::converte($cent);
@@ -66,17 +68,19 @@ class Extenso {
 			? 's'
 			: null;
 
+		$str = implode(" e ", $x );
+
 		switch ($tipo) {
-			case self::MOEDA:	
+			case self::MOEDA:
 				return ( strlen($cent) > 0 )
-					? implode(" e ", $x ) . " reais e {$cent} centavo{$dec}"
-					: implode(" e ", $x ) ;
+					? "{$str} reais e {$cent} centavo{$dec}"
+					: $str;
 				break;
 			
 			default:
 				return ( strlen($cent) > 0 )
-					? implode(" e ", $x ) . " e {$cent} centésimo{$dec}"
-					: implode(" e ", $x ) ;
+					? "{$str} e {$cent} centésimo{$dec}"
+					: $str;
 				break;
 		}
 	}
