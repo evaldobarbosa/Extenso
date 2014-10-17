@@ -1,0 +1,27 @@
+{
+	"name": "evaldobarbosa/extenso",
+	"description": "Biblioteca que escreve numeros por extenso",
+	"type": "library",
+	"keywords": ["numeros","extenso","moeda","utils"],
+	"homepage": "https://github.com/evaldobarbosa/extenso",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Evaldo Barbosa",
+			"email": "evaldobarbosa@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.3"
+	},
+	"autoload": {
+		"classmap": [
+                "src/"
+        ]	
+	},
+	"extra": {
+        "branch-alias": {
+            "dev-master": "0.5.0-dev"
+        }
+    }
+}
