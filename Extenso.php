@@ -51,12 +51,6 @@ class Extenso {
 		unset( $x[ count($x)-1 ] );
 
 		$x = array_reverse($x);
-		/*$x1 = [];
-		$i = 0;
-		while ( count($x1) < count($x) ) {
-			$x1[] = $x[ count($x) - $i ];
-			$i++; 
-		}*/
 
 		foreach ($x as $key => $value) {
 			$x[ $key ] = self::converte( $value );
