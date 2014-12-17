@@ -41,16 +41,22 @@ class Extenso {
 	}
 
 	static private function quebra() {
-		return preg_split("/[,\.]+/", self::$numero);
+		return preg_split("/[,\.]+/", (string)self::$numero);
 	}
 
 	static function numero($tipo) {
 		$x = self::quebra();
 
-		$cent = $x[ count($x)-1 ];
+		$cent = (string)$x[ count($x)-1 ];
 		unset( $x[ count($x)-1 ] );
 
 		$x = array_reverse($x);
+		/*$x1 = [];
+		$i = 0;
+		while ( count($x1) < count($x) ) {
+			$x1[] = $x[ count($x) - $i ];
+			$i++; 
+		}*/
 
 		foreach ($x as $key => $value) {
 			$x[ $key ] = self::converte( $value );
@@ -79,7 +85,7 @@ class Extenso {
 			case self::MOEDA:
 				return ( strlen($cent) > 0 )
 					? "{$str} reais e {$cent} centavo{$dec}"
-					: $str;
+					: "{$str} reais";
 				break;
 			
 			default:
@@ -142,10 +148,10 @@ class Extenso {
 			return null;
 		}
 
-		if ( $s1 == '00' ) {
-			if ( $s == '1' ) {
+		if ( $s1 == '00' && $s == '1') {
+			//if ( $s == '1' ) {
 				return 'cem';
-			}
+			//}
 		} else {
 			return self::$centenas[ (int)$s ];
 		}
